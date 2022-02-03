@@ -282,8 +282,8 @@ body {
 	color: white;
 	padding: 20px 0;
 	display: grid;
-	grid-template-columns: calc(40px + 3vw) 1fr calc(220px + 15vw);
-	/* column-gap: 8%; */
+	grid-template-columns: calc(60px + 3vw) 1fr calc(220px + 15vw);
+	/* column-gap: 15%; */
 	align-items: center;
 	visibility: hidden;
 }
@@ -292,15 +292,33 @@ body {
 	background: transparent;
 	border: none;
 	cursor: pointer;
+	padding-left: 1.5em;
+	width: 70px;
+	height: 35px;
+	position: relative;
+	top: -1px;
 }
 
-.menubar img {
+.bar {
 	width: 30px;
-	opacity: 0.8;
+	height: 4px;
+	background-color: white;
+	position: relative;
+	margin: 5px;
+	border-radius: 4px;
+	transition: transform 0.2s;
 }
 
-.menubar img:hover {
-	opacity: 1;
+.bar:nth-child(1).active {
+	transform: translateY(10px) rotate(45deg);
+}
+
+.bar:nth-child(2).active {
+	opacity: 0;
+}
+
+.bar:nth-child(3).active {
+	transform: translateY(-8px) rotate(-45deg);
 }
 
 .head .title {
@@ -338,12 +356,10 @@ aside img:hover {
 	justify-self: center;
 }
 
-
 /* 컨테이너 */
 
 .container {
-	/* background-color: white; */
-	width: 75%;
+	width: 100%;
 	display: flex;
 	margin: 0 auto;
 	justify-content: center;
@@ -356,15 +372,24 @@ nav {
 	align-self: flex-start;
 }
 
-.hiddenbar{
-	width : 50px;
+nav.active {
+	min-width: 0;
+}
+
+.hiddenbar {
+	width: 50px;
 	height: 50px;
-	border : 1px solid rgb(234, 234, 236);
+	border: 1px solid rgb(234, 234, 236);
 	text-align: center;
 	line-height: 50px;
 	position: fixed;
-	left : 279px;
+	left: 279px;
 	cursor: pointer;
+	transition: transform 0.5s;
+}
+
+.hiddenbar_active {
+	transform: translateX(-280px);
 }
 
 .sidebar {
@@ -378,6 +403,11 @@ nav {
 	background-color: rgb(250, 249, 255);
 	border-right: 1px solid rgb(234, 234, 236);
 	overflow: auto;
+	transition: transform 0.5s;
+}
+
+.sidebar_inactive {
+	transform: translateX(-280px);
 }
 
 nav ul {
@@ -388,11 +418,13 @@ nav ul li {
 	padding: 2px 0;
 }
 
-nav .guest, a.link_item:link {
+nav .guest,
+a.link_item:link {
 	color: #333;
 }
 
-nav .guest, a.link_item:visited {
+nav .guest,
+a.link_item:visited {
 	color: #333;
 }
 
@@ -462,12 +494,12 @@ nav hr {
 	cursor: pointer;
 }
 
-.admin{
-	padding : 10px;
+.admin {
+	padding: 10px;
 }
 
-.admin i{
-	color : #ddd;
+.admin i {
+	color: #ddd;
 }
 
 /***** 본문 영역 *****/
@@ -857,8 +889,6 @@ h3.tit_post {
 	margin-left: 5%;
 }
 
-/* 화살표 */
-
 /* 페이징 */
 
 .area_paging {
@@ -956,7 +986,7 @@ a.link_page {
 	nav {
 		width: 0;
 		min-width: 0;
-		display: none;
+		/* display: none; */
 	}
 
 	.sidebar {
@@ -965,7 +995,11 @@ a.link_page {
 		z-index: 99999;
 	}
 
-	.sidebar .title{
+	.hiddenbar {
+		display: none;
+	}
+
+	.sidebar .title {
 		display: none;
 	}
 
@@ -1029,6 +1063,10 @@ a.link_page {
 
 	.sidebar {
 		width: 100vw;
+	}
+
+	.sidebar_inactive {
+		transform: translateX(-100vw);
 	}
 
 	nav ul li {
