@@ -285,12 +285,12 @@ body {
 	grid-template-columns: calc(40px + 3vw) 1fr calc(220px + 15vw);
 	/* column-gap: 8%; */
 	align-items: center;
+	visibility: hidden;
 }
 
 .menubar {
 	background: transparent;
 	border: none;
-	visibility: hidden;
 	cursor: pointer;
 }
 
@@ -350,40 +350,37 @@ aside img:hover {
 }
 
 nav {
-	/* width: 25%; */
 	min-width: 280px;
-	/* padding: 2em;
-	margin-right: 1em; */
 	align-self: flex-start;
 }
 
 nav ul {
 	padding-left: 10px;
-	/* width : 100%; */
 }
 
 nav ul li {
 	padding: 2px 0;
 }
 
-a.link_item:link{
-  color: #222;
+a.link_item:link {
+	color: #222;
 }
 
-a.link_item:visited{
-  color: #222;
+a.link_item:visited {
+	color: #222;
 }
 
-a.link_sub_item:link{
-  color : #444;
+a.link_sub_item:link {
+	color: #444;
 }
 
 a.link_sub_item:visited {
-	color : #444;
+	color: #444;
 }
 
-a.link_item:hover, a.link_sub_item:hover{
-  color :rgb(179, 127, 214);
+a.link_item:hover,
+a.link_sub_item:hover {
+	color: rgb(179, 127, 214);
 }
 
 .category {
@@ -413,7 +410,7 @@ nav hr {
 	position: fixed;
 	left: 0;
 	padding: 1.5em;
-  padding-top : 80px;
+	padding-top: 40px;
 	top: 0;
 	height: 100vh;
 	background-color: rgb(242, 241, 248);
@@ -448,7 +445,7 @@ nav hr {
 /***** 본문 영역 *****/
 
 main {
-	margin-top: 60px;
+	
 	padding: 2em 3% 90px 3%;
 	width: 75%;
 	max-width: 970px;
@@ -527,9 +524,9 @@ h3.tit_post {
 	color: #777;
 }
 
-.area_title{
-  padding-bottom: 10px;
-  border-bottom : 1px solid #ddd;
+.area_title {
+	padding-bottom: 10px;
+	border-bottom: 1px solid #ddd;
 }
 
 .area_title > .txt_bar {
@@ -917,7 +914,8 @@ a.link_page {
 }
 
 @media screen and (max-width: 1400px) {
-	.menubar {
+
+	.head{
 		visibility: visible;
 	}
 
@@ -929,23 +927,15 @@ a.link_page {
 		width: 100%;
 	}
 
-
-  nav{
-    width: 0 ;
-    min-width: 0;
-    display: none;
-  }
-
+	nav {
+		width: 0;
+		min-width: 0;
+		display: none;
+	}
 
 	.sidebar {
 		top: 70px;
 		z-index: 99999;
-		
-	}
-
-	nav .close {
-		visibility: visible;
-		z-index: 999;
 	}
 
 	.search a {
@@ -953,6 +943,7 @@ a.link_page {
 	}
 
 	main {
+		margin-top: 80px;
 		padding: 30px;
 		width: 100%;
 		box-sizing: border-box;
