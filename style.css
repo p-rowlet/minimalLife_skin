@@ -255,7 +255,7 @@ body {
 }
 
 .title {
-	font-family: "Cafe24Shiningstar";
+	font-family: "Cafe24Shiningstar", Pretendard-Bold, "맑은 고딕";
 	font-size: 2em;
 }
 
@@ -338,7 +338,8 @@ aside img:hover {
 	justify-self: center;
 }
 
-/* 사이드바 */
+
+/* 컨테이너 */
 
 .container {
 	/* background-color: white; */
@@ -349,9 +350,34 @@ aside img:hover {
 	border-radius: 10px 10px 0 0;
 }
 
+/* 사이드바 */
 nav {
 	min-width: 280px;
 	align-self: flex-start;
+}
+
+.hiddenbar{
+	width : 50px;
+	height: 50px;
+	border : 1px solid rgb(234, 234, 236);
+	text-align: center;
+	line-height: 50px;
+	position: fixed;
+	left : 279px;
+	cursor: pointer;
+}
+
+.sidebar {
+	width: 280px;
+	position: fixed;
+	left: 0;
+	padding: 60px 1.5em 0 1.5em;
+	padding-top: 60px;
+	top: 0;
+	height: 100vh;
+	background-color: rgb(250, 249, 255);
+	border-right: 1px solid rgb(234, 234, 236);
+	overflow: auto;
 }
 
 nav ul {
@@ -362,20 +388,20 @@ nav ul li {
 	padding: 2px 0;
 }
 
-a.link_item:link {
-	color: #222;
+nav .guest, a.link_item:link {
+	color: #333;
 }
 
-a.link_item:visited {
-	color: #222;
+nav .guest, a.link_item:visited {
+	color: #333;
 }
 
 a.link_sub_item:link {
-	color: #444;
+	color: #666;
 }
 
 a.link_sub_item:visited {
-	color: #444;
+	color: #666;
 }
 
 a.link_item:hover,
@@ -401,21 +427,15 @@ nav .close {
 }
 
 nav hr {
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 	border: none;
 }
 
-.sidebar {
-	width: 280px;
-	position: fixed;
-	left: 0;
-	padding: 1.5em;
-	padding-top: 40px;
-	top: 0;
-	height: 100vh;
-	background-color: rgb(242, 241, 248);
-	border-right: 1px solid rgb(234, 234, 236);
-	overflow: auto;
+.sidebar .title {
+	padding: 0 0 15px 15px;
+	border-bottom: 1px solid rgb(234, 234, 236);
+	font-size: 2.5em;
+	margin-bottom: 10px;
 }
 
 .search {
@@ -442,10 +462,17 @@ nav hr {
 	cursor: pointer;
 }
 
+.admin{
+	padding : 10px;
+}
+
+.admin i{
+	color : #ddd;
+}
+
 /***** 본문 영역 *****/
 
 main {
-	
 	padding: 2em 3% 90px 3%;
 	width: 75%;
 	max-width: 970px;
@@ -914,8 +941,7 @@ a.link_page {
 }
 
 @media screen and (max-width: 1400px) {
-
-	.head{
+	.head {
 		visibility: visible;
 	}
 
@@ -934,8 +960,13 @@ a.link_page {
 	}
 
 	.sidebar {
+		padding-top: 10px;
 		top: 70px;
 		z-index: 99999;
+	}
+
+	.sidebar .title{
+		display: none;
 	}
 
 	.search a {

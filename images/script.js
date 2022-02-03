@@ -22,7 +22,6 @@ scroll.addEventListener('click', e=>{
 
 const menu = document.querySelector('.menubar');
 const nav = document.querySelector('nav');
-const close = document.querySelector('.close');
 
 menu.addEventListener('click', e=>{
     if(nav.style.display === 'block'){
@@ -32,10 +31,6 @@ menu.addEventListener('click', e=>{
     }
     
 });
-
-close.addEventListener('click', e=>{
-    nav.style.display = 'none';
-})
 
 function requestSearch(className){
     try{
