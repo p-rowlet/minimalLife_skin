@@ -1,6 +1,5 @@
 @charset "utf-8";
 
-/* 폰트 불러오기 */
 @font-face {
 	font-family: "Cafe24Shiningstar";
 	src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Shiningstar.woff")
@@ -25,12 +24,71 @@
 	font-style: normal;
 }
 
+:root{
+	--font: "Pretendard-Regular", "맑은 고딕", sans-serif;
+	--font-bold: "Pretendard-Bold", "맑은 고딕", sans-serif;
+	--font-decoration: "Cafe24Shiningstar", Pretendard-Bold, "맑은 고딕",
+		sans-serif;
+}
+
+body {
+	--root-color : black;
+	--nav-color: rgb(250, 249, 255);
+	--sub-color: rgb(105, 106, 199);
+	--sub-action-color: rgb(51, 52, 117);
+	--header-backcolor: rgba(0, 0, 0, 0.7);
+	--header-fontcolor: white;
+	--link-basecolor: black;
+
+	--body-color: white;
+
+	--main-color: #333;
+	--submain-color: #666;
+	--title-color : #333;
+	--line-color: #ddd;
+	--input-color : #fff;
+
+	--hidden-color : #eee;
+	--inactive-color: #aaa;
+	--selection-color : #fff;
+	--selection-back-color : rgb(100, 102, 209);
+}
+
+body.dark {
+	--root-color : #ddd;
+	--nav-color: rgb(33, 32, 37);
+	--sub-color: rgb(129, 130, 216);
+	--sub-action-color: rgb(51, 52, 117);
+	--header-backcolor: rgba(0, 0, 0, 0.7);
+	--header-fontcolor: rgb(212, 204, 204);
+	--link-basecolor: rgb(209, 207, 218);
+
+	--body-color: rgb(39, 40, 46);
+
+	--main-color: rgb(202, 200, 212);
+	--submain-color: rgb(186, 186, 187);
+	--title-color : rgb(185, 186, 248);
+	--line-color: rgb(88, 88, 92);
+	--input-color : rgb(34, 35, 39);
+
+	--hidden-color : #333;
+	--inactive-color: #aaa;
+	--selection-color : inherit;
+	--selection-back-color : rgb(65, 120, 122);
+}
+
+::selection{
+	color : var(--selection-color);
+	background: var(--selection-back-color);
+}
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 html {
 	line-height: 1.5em;
-	font-family: "Pretendard-Regular";
+	font-family: var(--font);
 	-webkit-text-size-adjust: 100%;
+	
 }
 
 body {
@@ -42,13 +100,13 @@ main {
 }
 
 h1 {
-	font-family: "Pretendard-Bold";
+	font-family: var(--font-bold);
 	font-size: 2em;
 	margin: 0.67em 0;
 }
 
 h2 {
-	font-family: "Pretendard-Bold";
+	font-family: var(--font-bold);
 }
 
 hr {
@@ -74,8 +132,7 @@ abbr[title] {
 
 b,
 strong {
-	font-family: "Pretendard-Bold";
-	/* font-weight: bolder; */
+	font-family: var(--font-bold);
 }
 
 code,
@@ -218,6 +275,7 @@ template {
 
 * {
 	box-sizing: border-box;
+	color : var(--root-color);
 }
 
 input {
@@ -236,26 +294,26 @@ ol {
 }
 
 a:link {
-	color: black;
+	color: var(--link-basecolor);
 	text-decoration: none;
 }
 
 a:visited {
-	color: black;
+	color: var(--link-basecolor);
 	text-decoration: none;
 }
 
 a:hover {
-	color: rgb(105, 106, 199);
+	color: var(--sub-color);
 	text-decoration: none;
 }
 
 body {
-	/* background-color: #ffd1d1; */
+	background-color: var(--body-color);
 }
 
 .title {
-	font-family: "Cafe24Shiningstar", Pretendard-Bold, "맑은 고딕";
+	font-family: var(--font-decoration);
 	font-size: 2em;
 }
 
@@ -278,8 +336,8 @@ body {
 	position: fixed;
 	top: 0;
 	left: 0;
-	background-color: rgba(0, 0, 0, 0.7);
-	color: white;
+	background-color: var(--header-backcolor);
+	color: var(--header-fontcolor);
 	padding: 20px 0;
 	display: grid;
 	grid-template-columns: calc(60px + 3vw) 1fr calc(220px + 15vw);
@@ -288,6 +346,23 @@ body {
 	visibility: hidden;
 }
 
+.head .title {
+	justify-self: start;
+}
+
+.head .title a:link {
+	color: var(--header-fontcolor);
+}
+
+.head .title a:visited {
+	color: var(--header-fontcolor);
+}
+
+.head .title a:hover {
+	color: var(--header-fontcolor);
+}
+
+/* 움직이는 메뉴바 */
 .menubar {
 	background: transparent;
 	border: none;
@@ -302,7 +377,7 @@ body {
 .bar {
 	width: 30px;
 	height: 4px;
-	background-color: white;
+	background-color: var(--header-fontcolor);
 	position: relative;
 	margin: 5px;
 	border-radius: 4px;
@@ -321,31 +396,15 @@ body {
 	transform: translateY(-8px) rotate(-45deg);
 }
 
-.head .title {
-	justify-self: start;
-}
-
-.head .title a:link {
-	color: white;
-}
-
-.head .title a:visited {
-	color: white;
-}
-
-.head .title a:hover {
-	color: white;
-}
-
-/* 나중에 다크모드/라이트모드 넣을 부분 */
-aside div {
-	display: none;
-}
-
-aside img {
-	width: 30px;
-	margin-right: 5px;
+aside .darkbar {
+	font-size : 30px;
+	margin-right: 20px;
 	opacity: 0.8;
+	cursor: pointer;
+}
+
+aside .darkbar i{
+	color: var(--header-fontcolor);
 }
 
 aside img:hover {
@@ -379,7 +438,7 @@ nav.active {
 .hiddenbar {
 	width: 50px;
 	height: 50px;
-	border: 1px solid rgb(234, 234, 236);
+	border: 1px solid var(--line-color);
 	text-align: center;
 	line-height: 50px;
 	position: fixed;
@@ -388,9 +447,28 @@ nav.active {
 	transition: transform 0.5s;
 }
 
-.hiddenbar_active {
+.hiddenbar.active {
 	transform: translateX(-280px);
 }
+
+nav .darkbar {
+	width: 50px;
+	height: 50px;
+	border: 1px solid var(--line-color);
+	text-align: center;
+	line-height: 50px;
+	font-size : 25px;
+	position: fixed;
+	left: 279px;
+	top : 70px;
+	cursor: pointer;
+	transition: transform 0.5s;
+}
+
+nav .darkbar.active{
+	transform: translateX(-280px);
+}
+
 
 .sidebar {
 	width: 280px;
@@ -400,8 +478,8 @@ nav.active {
 	padding-top: 60px;
 	top: 0;
 	height: 100vh;
-	background-color: rgb(250, 249, 255);
-	border-right: 1px solid rgb(234, 234, 236);
+	background-color: var(--nav-color);
+	border-right: 1px solid var(--line-color);
 	overflow: auto;
 	transition: transform 0.5s;
 }
@@ -420,25 +498,25 @@ nav ul li {
 
 nav .guest,
 a.link_item:link {
-	color: #333;
+	color: var(--main-color);
 }
 
 nav .guest,
 a.link_item:visited {
-	color: #333;
+	color: var(--main-color);
 }
 
 a.link_sub_item:link {
-	color: #666;
+	color: var(--submain-color);
 }
 
 a.link_sub_item:visited {
-	color: #666;
+	color: var(--submain-color);
 }
 
 a.link_item:hover,
 a.link_sub_item:hover {
-	color: rgb(105, 106, 199);
+	color: var(--sub-color);
 }
 
 .category {
@@ -465,9 +543,13 @@ nav hr {
 
 .sidebar .title {
 	padding: 0 0 15px 15px;
-	border-bottom: 1px solid rgb(234, 234, 236);
+	border-bottom: 1px solid var(--line-color);
 	font-size: 2.5em;
 	margin-bottom: 10px;
+}
+
+.sidebar .title a{
+	color: var(--title-color);
 }
 
 .search {
@@ -479,8 +561,8 @@ nav hr {
 	height: 40px;
 	background-color: transparent;
 	padding-left: 10px;
-	border-bottom: 1px solid #555;
-	color: #555;
+	border-bottom: 1px solid var(--line-color);
+	color: var(--submain-color);
 	margin-top: -5px;
 }
 
@@ -494,12 +576,16 @@ nav hr {
 	cursor: pointer;
 }
 
+.search i {
+	color: var(--submain-color);
+}
+
 .admin {
 	padding: 10px;
 }
 
 .admin i {
-	color: #ddd;
+	color: var(--hidden-color);
 }
 
 /***** 본문 영역 *****/
@@ -508,14 +594,13 @@ main {
 	padding: 2em 3% 90px 3%;
 	width: 75%;
 	max-width: 970px;
-	background-color: white;
+	background-color: var(--body-color);
 }
 
 /* 글 목록 */
 .list_content {
 	padding: 30px 20px;
-	border-bottom: 1px solid #ddd;
-	/* margin-bottom: 1.5em; */
+	border-bottom: 1px solid var(--line-color);
 	display: flex;
 	justify-content: space-between;
 }
@@ -543,7 +628,7 @@ main {
 
 .tit_skin .txt_title {
 	font-size: 0.8em;
-	color: #222;
+	color: var(--main-color);
 	font-weight: normal;
 }
 
@@ -570,22 +655,22 @@ h3.tit_post {
 }
 
 .link_cate:link {
-	color: rgb(105, 106, 199);
+	color: var(--sub-color);
 }
 
 .link_cate:hover {
-	color: rgb(105, 106, 199);
+	color: var(--sub-color);
 }
 
 /* 본문영역 */
 
 .txt_date {
-	color: #777;
+	color: var(--submain-color);
 }
 
 .area_title {
 	padding-bottom: 10px;
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid var(--line-color);
 }
 
 .area_title > .txt_bar {
@@ -594,7 +679,7 @@ h3.tit_post {
 
 .txt_bar,
 .txt_bar a {
-	color: #777;
+	color: var(--submain-color);
 	font-size: 0.95em;
 }
 
@@ -618,7 +703,7 @@ h3.tit_post {
 
 .area_view pre {
 	color: #555;
-	background-color: #f6f7f8;
+	/* background-color: #f6f7f8; */
 	margin: 28px auto;
 	word-wrap: break-word;
 	font-family: Menlo, Consolas, Monaco, monospace;
@@ -631,20 +716,6 @@ h3.tit_post {
 	padding: 16px;
 }
 
-.list_tag dt,
-.list_tag dd {
-	display: inline;
-}
-
-.list_tag dt {
-	color: #555;
-}
-
-.list_tag dd {
-	margin: 0;
-}
-
-/* 본문 내용 */
 blockquote[data-ke-style="style1"] {
 	text-align: center;
 	background: url(./images/quote.png) no-repeat 50% 0;
@@ -666,6 +737,28 @@ blockquote[data-ke-style="style2"] {
 	text-align: left;
 }
 
+blockquote[data-ke-style="box"], #tt-body-page blockquote[data-ke-style="box"], blockquote[data-ke-style="style3"], #tt-body-page blockquote[data-ke-style="style3"] {
+	border: 1px solid var(--line-color);
+	background: var(--input-color);
+	text-align: left;
+	padding: 21px 25px 20px 25px;
+	color: #666;
+	line-height: 1.75;
+}
+
+.list_tag dt,
+.list_tag dd {
+	display: inline;
+}
+
+.list_tag dt {
+	color: var(--submain-color);
+}
+
+.list_tag dd {
+	margin: 0;
+}
+
 /* 덧글 목록 */
 
 .list_reply {
@@ -681,24 +774,20 @@ blockquote[data-ke-style="style2"] {
 	padding: 23px 0 22px 0;
 	min-height: 53px;
 	position: relative;
-	border-top: 1px solid #eee;
+	border-top: 1px solid var(--line-color);
 }
 
 .tit_reply {
 	display: block;
 	margin: 1em;
 	font-size: 1em;
-	color: #222;
+	color: var(--main-color);
 	font-weight: normal;
-}
-
-.tit_reply img {
-	position: relative;
-	top: 7px;
+	min-width: 48px;
 }
 
 .link_reply:link {
-	color: #777;
+	color: var(--submain-color);
 	font-size: 0.9em;
 }
 
@@ -708,7 +797,7 @@ blockquote[data-ke-style="style2"] {
 	margin-top: 5px;
 	margin-right: 20px;
 	border-radius: 50%;
-	background-color: #777;
+	background-color: var(--submain-color);
 	align-self: flex-start;
 }
 
@@ -737,7 +826,7 @@ blockquote[data-ke-style="style2"] {
 /* 댓글쓰기 창 */
 .fld_reply {
 	border: none;
-	border: 1px solid #ccc;
+	border: 1px solid var(--line-color);
 	border-radius: 5px;
 	padding: 1% 2%;
 }
@@ -749,6 +838,7 @@ blockquote[data-ke-style="style2"] {
 	margin-right: 10px;
 	padding: 0 8px;
 	border-radius: 5px;
+	background-color: var(--input-color);
 }
 
 .writer_info {
@@ -771,7 +861,7 @@ blockquote[data-ke-style="style2"] {
 }
 
 .check_secret .ico_check {
-	border: 2px solid #ccc;
+	border: 2px solid var(--line-color);
 	width: 18px;
 	height: 18px;
 	display: inline-block;
@@ -786,9 +876,9 @@ blockquote[data-ke-style="style2"] {
 	height: 80px;
 	border: none;
 	border-radius: 5px;
-	/* border : 1px solid #aaa; */
 	resize: none;
 	padding: 8px;
+	background-color: var(--input-color);
 }
 
 .reply_write .tf_reply:focus {
@@ -800,16 +890,16 @@ blockquote[data-ke-style="style2"] {
 	height: 40px;
 	border-radius: 5px;
 	border: none;
-	background-color: rgb(255, 255, 255);
-	border: 2px solid #666;
-	color: #333;
+	background-color: var(--sub-color);
+	color: var(--main-color);
+	color: white;
 	float: right;
 	margin: 5px 0 10px 0;
 	cursor: pointer;
 }
 
 .writer_btn button:hover {
-	background-color: #666;
+	background-color: var(--sub-action-color);
 	color: white;
 }
 
@@ -838,7 +928,7 @@ blockquote[data-ke-style="style2"] {
 .btn_prev,
 .btn_next {
 	display: inline-block;
-	background-color: rgb(105, 106, 199);
+	background-color: var(--sub-color);
 	width: 80px;
 	height: 35px;
 	text-align: center;
@@ -848,17 +938,17 @@ blockquote[data-ke-style="style2"] {
 
 .btn_prev:hover,
 .btn_next:hover {
-	background-color: rgb(51, 52, 117);
+	background-color: var(--sub-action-color);
 }
 
 .no-more-prev,
 .no-more-next {
-	background-color: #aaa;
+	background-color: var(--inactive-color);
 }
 
 .no-more-prev:hover,
 .no-more-next:hover {
-	background-color: #aaa;
+	background-color: var(--inactive-color);
 }
 
 .inner_paging > a:link {
@@ -874,7 +964,7 @@ blockquote[data-ke-style="style2"] {
 }
 
 a.link_page {
-	margin: 1vw;
+	margin: 0.8vw;
 }
 
 .link_page .selected {
@@ -886,8 +976,7 @@ a.link_page {
 .scrolling {
 	width: 50px;
 	height: 50px;
-	background-color: rgb(105, 106, 199);
-	color: white;
+	background-color: var(--sub-color);
 	border-radius: 50%;
 	font-size: 1.5em;
 	line-height: 50px;
@@ -900,7 +989,11 @@ a.link_page {
 }
 
 .scrolling:hover {
-	background-color: rgb(51, 52, 117);
+	background-color: var(--sub-action-color);
+}
+
+.scrolling i{
+	color: white;
 }
 
 /* 반응형 설정 */
@@ -941,7 +1034,7 @@ a.link_page {
 		z-index: 99999;
 	}
 
-	.hiddenbar {
+	.hiddenbar, nav>.darkbar {
 		display: none;
 	}
 
@@ -987,6 +1080,10 @@ a.link_page {
 @media screen and (max-width: 480px) {
 	* {
 		font-size: 15px;
+	}
+
+	aside .darkbar i{
+		font-size : 30px;
 	}
 
 	.list_content {
@@ -1042,8 +1139,7 @@ a.link_page {
 
 	h3.tit_post {
 		font-size: 1.4em;
-		font-family: "Pretendard-Bold";
-		/* font-family: "맑은 고딕"; */
+		font-family: var(--font-bold);
 	}
 
 	.list_thumnail {

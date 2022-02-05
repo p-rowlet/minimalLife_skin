@@ -32,7 +32,9 @@
                    <a href="[##_blog_link_##]">[##_title_##]</a>
                 </div>
                 <aside>
-                    <div>.</div>
+                    <div class="darkbar">
+                        <i class="fas fa-sun"></i>
+                    </div>
                 </aside>
             </div>
         </header>
@@ -41,6 +43,9 @@
         <nav>
             <div class="hiddenbar">
                 <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="darkbar">
+                <i class="fas fa-sun"></i>
             </div>
             <div class="sidebar">
                 <div class="title">
@@ -83,7 +88,7 @@
                         <div class="search">
                             <s_search>
                                 <input type="text" name="[##_search_name_##]" value="[##_search_text_##]" class="input_search" onkeyup="if (event.key == 'Enter') { requestSearch('.input_search') }">
-                                <a onclick="requestSearch('.input_search')"><img src="./images/search.svg" alt="검색버튼"></a>
+                                <a onclick="requestSearch('.input_search')"><i class="fas fa-search"></i></a>
                                 <hr>
                             </s_search>
                         </div>
