@@ -2,39 +2,42 @@ const body = document.querySelector("body");
 const scroll = document.querySelector(".scrolling");
 const menu = document.querySelector(".menubar");
 const nav = document.querySelector("nav");
-const hiddenbar = document.querySelector(".hiddenbar");
-const hiddenbari = document.querySelector(".hiddenbar i");
+
 const sidebar = document.querySelector(".sidebar");
 const bar = document.querySelectorAll(".bar");
+
+// 사이드바 숨기기 버튼 + 다크모드 버튼
+const hiddenbar = document.querySelector(".hiddenbar");
+const hiddenbari = document.querySelector(".hiddenbar i");
 const darkbar = document.querySelectorAll(".darkbar");
 const darkbari = document.querySelectorAll(".darkbar i");
 
+function hideSidebar(){
+	sidebar.style.display = "none";
+	sidebar.classList.add("sidebar_inactive");
+	setTimeout(() => {
+		sidebar.style.display = "block";
+	}, 1500);
+}
+
+// 다크모드 처리
 if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
 	window.document.body.classList.add("dark");
 }
 
 if (window.innerWidth < 1400) {
-	sidebar.style.display = "none";
-	sidebar.classList.add("sidebar_inactive");
-	setTimeout(() => {
-		sidebar.style.display = "block";
-	}, 1800);
+	hideSidebar();
 }
 
-darkbar[0].addEventListener("click", (e) => {
-	body.classList.toggle("dark");
-	darkbari[0].classList.toggle("fa-sun");
-	darkbari[0].classList.toggle("fa-moon");
-    darkbari[1].classList.toggle("fa-sun");
-	darkbari[1].classList.toggle("fa-moon");
-});
-
-darkbar[1].addEventListener("click", (e) => {
-	body.classList.toggle("dark");
-	darkbari[0].classList.toggle("fa-sun");
-	darkbari[0].classList.toggle("fa-moon");
-    darkbari[1].classList.toggle("fa-sun");
-	darkbari[1].classList.toggle("fa-moon");
+//다크-라이트 전환버튼 토글 이벤트
+darkbar.forEach(element =>{
+	element.addEventListener("click", ()=>{
+		body.classList.toggle("dark");
+		darkbari.forEach(element =>{
+			element.classList.toggle("fa-sun");
+			element.classList.toggle("fa-moon")
+		});
+	});
 });
 
 window.addEventListener("scroll", (e) => {
@@ -53,14 +56,10 @@ window.addEventListener("resize", (e) => {
         darkbar[1].classList.remove("active");
 		nav.classList.remove("active");
 	} else {
-		sidebar.style.display = "none";
-		sidebar.classList.add("sidebar_inactive");
-		setTimeout(() => {
-			sidebar.style.display = "block";
-		}, 1500);
-		for (let i = 0; i < 3; i++) {
-			bar[i].classList.remove("active");
-		}
+		hideSidebar();
+		bar.forEach(element =>{
+			element.classList.remove("active");
+		});
 	}
 });
 
@@ -71,9 +70,9 @@ scroll.addEventListener("click", (e) => {
 menu.addEventListener("click", (e) => {
 	sidebar.classList.toggle("sidebar_inactive");
 	nav.classList.toggle("active");
-	for (let i = 0; i < 3; i++) {
-		bar[i].classList.toggle("active");
-	}
+	bar.forEach(element =>{
+		element.classList.toggle("active");
+	});
 });
 
 hiddenbar.addEventListener("click", (e) => {
@@ -84,6 +83,7 @@ hiddenbar.addEventListener("click", (e) => {
 	nav.classList.toggle("active");
 });
 
+//검색 처리
 function requestSearch(className) {
 	try {
 		window.location.href =

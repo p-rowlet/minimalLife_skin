@@ -1,34 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <skin>
 	<information>
-		<name>#2</name>
-		<version>1.1</version>
+		<name>minimalLife</name>
+		<version>1.0</version>
 		<description>
-			<![CDATA[ 뀨뀨한 스킨 ]]>
+			<![CDATA[ 최소 그 자체인 스킨 ]]>
 		</description>
 		<license>
 			<![CDATA[ X ]]>
 		</license>
 	</information>
 	<author>
-		<name>뀨</name>
+		<name>rowlet</name>
 		<homepage>http://rowlet.tistory.com</homepage>
 		<email>kagechi@naver.com</email>
 	</author>
 	<variables>
 		<variable>
-			<name>cover-image</name>
-			<label>
-				<![CDATA[ 커버이미지 ]]>
-			</label>
-			<type>IMAGE</type>
-			<option />
-			<default>
-				<![CDATA[ https://t1.daumcdn.net/tistory/0/Ray2/images/header_default.jpg ]]>
-			</default>
-			<description>
-				<![CDATA[ 커버 이미지를 변경합니다. ]]>
-			</description>
+			
 		</variable>
 	</variables>
 	<default>
