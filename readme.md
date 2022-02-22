@@ -7,6 +7,16 @@
 처음 제작하는 스킨이며, 기타 플러그인 삽입을 고려하지 않아 어떤 문제가 발생할 지 알 수 없습니다.   
 버그나 이용 시 문제가 있다면 언제든지 제보해주세요. 풀리퀘도 환영합니다 'ㅁ' 
 
+## 미리보기
+적용된 블로그 바로가기! => [링크](https://rowlet.tistory.com)    
+
+### 다크모드
+![preview_dark](./preview.png)
+### 라이트모드
+![preview_light](./preview2.png)
+### 모바일/태블릿
+![preview_mobile](./preview_mobile.png)
+
 ## 이 스킨이 제공하는 (정말 최소한의)기능
 - 공지사항
 - 카테고리
